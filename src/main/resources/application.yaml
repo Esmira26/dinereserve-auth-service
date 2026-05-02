@@ -3,9 +3,9 @@ spring:
     name: dinereserve-auth-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/dinereserve
-    username: postgres
-    password: 1979
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/dinereserve}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:1979}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -17,11 +17,10 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: false
 
-
 jwt:
-  secret: almararmudheyvanarasdafsghfdssfghfdssdsddsdsdsd
-  access-expiration: 300000
-  refresh-expiration: 1800000
+  secret: ${JWT_SECRET:almararmudheyvanarasdafsghfdssfghfdssdsddsdsdsd}
+  access-expiration: ${JWT_ACCESS_EXPIRATION:300000}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION:1800000}
 
 server:
   port: 8081
@@ -29,6 +28,12 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://dinereserve-discovery-server:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
+
+
+logging:
+  level:
+    org.springframework.security: TRACE
+    org.springframework.web: DEBUG

@@ -33,12 +33,14 @@ public class UserService {
     userRequest.setPhone(request.getPhone());
     userRequest.setAddress(request.getAddress());
 
+    userRequest.setEmail(request.getEmail());
+
     userClient.createUser(userRequest);
 
     return new RegisterResponse(savedUser.getId(), "User registered successfully");
   }
 
-  public User findByEmail(String email){
-    return userRepository.findByEmail(email);
-  }
+
+
+
 }

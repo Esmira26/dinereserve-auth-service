@@ -1,8 +1,6 @@
 package com.example.dinereserveauthservice.controller;
 
-import com.example.dinereserveauthservice.dto.request.LoginRequest;
-import com.example.dinereserveauthservice.dto.request.RefreshRequest;
-import com.example.dinereserveauthservice.dto.request.RegisterRequest;
+import com.example.dinereserveauthservice.dto.request.*;
 import com.example.dinereserveauthservice.dto.response.LoginResponse;
 import com.example.dinereserveauthservice.dto.response.RefreshResponse;
 import com.example.dinereserveauthservice.dto.response.RegisterResponse;
@@ -45,5 +43,17 @@ public class AuthController {
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
           .body(new RefreshResponse(null, null)); // lazım olsa error mesaj da əlavə edə bilərsən
     }
+  }
+
+  @PostMapping("/forgot-password")
+  public ResponseEntity<Void> forgotPassword(@RequestBody ForgotPasswordRequest request) {
+    authService.forgotPassword(request);
+    return ResponseEntity.noContent().build();
+  }
+
+  @PostMapping("/reset-password")
+  public ResponseEntity<Void> resetPassword(@RequestBody ResetPasswordRequest request) {
+    authService.resetPassword(request);
+    return ResponseEntity.noContent().build();
   }
 }

@@ -1,5 +1,6 @@
 package com.example.dinereserveauthservice.dto.request;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
@@ -16,4 +17,8 @@ public class UserRequest {
 
   @Pattern(regexp = "^[\\w\\s,.-]+$",
       message = "Ünvan yalnız hərf, rəqəm və ,.- simvollarından ibarət ola bilər")
-  private String address;}
+  private String address;
+
+  @Email
+  private String email;
+}

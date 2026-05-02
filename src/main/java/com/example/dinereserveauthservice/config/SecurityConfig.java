@@ -47,7 +47,7 @@ public class SecurityConfig {
         )
 
         .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh-token").permitAll()
+            .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/refresh-token", "/api/auth/forgot-password", "/api/auth/reset-password", "/error").permitAll()
 
             // Role-based endpoint qoruma nümunəsi
             // .requestMatchers("/api/admin/**").hasRole("ADMIN")
